@@ -1,32 +1,16 @@
 <?php
-//test7
-class Deploy
-{
-    public function deploy()
-    {
-        $commands = ['cd /www/wwwroot/redSnail','git pull'];
-
-        $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
-        $payload = file_get_contents('php://input');
-        error_log($payload);
-        if($this->isFromGithub($payload,$signature)){
-            foreach ($commands as $command) {
-                shell_exec($command);
-            }
-            http_response_code(200);
-        }else{
-            exit('error,bad request');
-        }
-    }
-
-    private function isFromGithub($payload,$signature)
-    {
-        return 'sha1='.hash_hmac('sha1',$payload,'2e4dd3e73a4b2f854357ba21a8bdd3fc',false) === $signature;  // 2e4dd…… 就是密钥
-    }
+// 与webhook配置相同，为了安全，请设置此参数
+$secret = "Hinterwolf08";
+// 项目路径
+$path = "/www/wwwroot/redSnail";
+// 校验发送位置，正确的情况下自动拉取代码，实现自动部署
+$signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
+if ($signature) {
+  $hash = "sha1=".hash_hmac('sha1', file_get_contents("php://input"), $secret);
+  if (strcmp($signature, $hash) == 0) {
+    echo shell_exec("cd \ && cd {$path} && git pull 2>&1");
+    exit();
+  }
 }
+http_response_code(404);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $deploy = new Deploy();
-    $deploy->deploy();
-}
-?>
