@@ -1,6 +1,6 @@
 <?php
 namespace app\pc\controller;
-use think\Controller
+use think\Controller;
 
 class Home extends Controller
 {
