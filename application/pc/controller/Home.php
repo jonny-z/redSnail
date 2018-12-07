@@ -1,7 +1,8 @@
 <?php
 namespace app\pc\controller;
+use think\Controller
 
-class Home
+class Home extends Controller
 {
     public function index()
     {
