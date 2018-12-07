@@ -6,7 +6,7 @@ class Home extends Controller
 {
     public function index()
     {
-        return $this -> fetch();
+        return $this -> fetch('home');
     }
 
     public function hello($name = 'ThinkPHP5')
