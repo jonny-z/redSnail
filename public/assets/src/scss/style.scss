@@ -1,4 +1,6 @@
-$bg-color: red;
-body {
-	background-color: $bg-color;
-}
+@import './variable';
+@import './mixin';
+
+@import './common/global';
+@import './common/layout';
+@import './common/font';
