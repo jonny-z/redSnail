@@ -6,3 +6,73 @@
   content: '';
   display: table;
   clear: both; }
+
+.rs-row {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px; }
+
+@font-face {
+  font-family: Chalkduster;
+  src: url("../../assets/fonts/Chalkduster.ttf") format("truetype"); }
+
+@keyframes scale {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
+
+svg {
+  overflow: visible; }
+
+#Logo_Group {
+  stroke: #000;
+  stroke-dasharray: 100 400;
+  stroke-dashoffset: -350;
+  transition: 1s all ease;
+  cursor: pointer; }
+  #Logo_Group.active {
+    stroke-dasharray: 400 300;
+    stroke-dashoffset: 0;
+    stroke: #000; }
+  #Logo_Group use {
+    fill-opacity: 0;
+    transition: 1s fill-opacity ease;
+    transition-delay: 1s; }
+    #Logo_Group use.active {
+      fill-opacity: 1; }
+  #Logo_Group:hover g {
+    animation: scale 0.5s ease 0.2s; }
+  #Logo_Group:hover #R {
+    animation-delay: 0.2s; }
+  #Logo_Group:hover #e {
+    animation-delay: 0.3s; }
+  #Logo_Group:hover #d {
+    animation-delay: 0.4s; }
+  #Logo_Group:hover #S {
+    animation-delay: 0.5s; }
+  #Logo_Group:hover #n {
+    animation-delay: 0.6s; }
+  #Logo_Group:hover #a {
+    animation-delay: 0.7s; }
+  #Logo_Group:hover #i {
+    animation-delay: 0.8s; }
+  #Logo_Group:hover #l {
+    animation-delay: 0.9s; }
+
+.rs-antenna-section {
+  height: 60px;
+  box-shadow: 0 0 6px #ccc; }
+  .rs-antenna-section .antenna {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%; }
+  .rs-antenna-section .logo-link {
+    display: block; }
+
+.rs-banner-section {
+  background: #EEE url("../../assets/imgs/banner.jpg") no-repeat bottom/cover;
+  height: 550px; }
