@@ -21,7 +21,7 @@
 	display: flex;
     align-items: center;
     align-self: stretch;
-    width: 35px;
+    width: 33px;
     margin-right: 15px;
 	cursor: pointer;
 	margin-top: 2px;
@@ -36,6 +36,9 @@
 }
 @keyframes bottomChange {
 	100% {width: 45px;}
+}
+@keyframes bottomAfterChange {
+	100% {height: 7px; border-width: 2px;}
 }
 .hamburger {
 	position: relative;
@@ -72,6 +75,21 @@
 		bottom: -13px;
 		.rs-hamburger-wrapper.dropDown & {
 			animation: bottomChange 0.3s ease-in 0.4s forwards;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			right: 3px;
+			bottom: 2px;
+			width: 2px;
+			height: 0;
+			border: 0 solid #333;
+			background-color: #c40000;
+			border-radius: 50%;
+			transition: width 0.2s ease-in 1.5s;
+			.rs-hamburger-wrapper.dropDown & {
+				animation: bottomAfterChange 0.5s ease-in 1.2s forwards;
+			}
 		}
 	}
 }
