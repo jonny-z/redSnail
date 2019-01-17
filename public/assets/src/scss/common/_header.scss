@@ -1,13 +1,77 @@
 .rs-antenna-section {
-	height: 60px;
-	box-shadow: 0 0 6px #ccc;
+	position: relative;
+	height: 55px;
+	box-shadow: 0 0 6px $rs-gray;
 	.antenna {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		height: 100%;
 	}
+	.antenna-left {
+		display: flex;
+		align-items: center;
+	}
 	.logo-link {
 		display: block;
+		margin-top: 7px;
+	}
+}
+.rs-hamburger-wrapper {
+	display: flex;
+    align-items: center;
+    align-self: stretch;
+    width: 35px;
+    margin-right: 15px;
+	cursor: pointer;
+	margin-top: 2px;
+}
+@keyframes topChange {
+	70% {width: 40px;height: 30px;}
+	100% {width: 33px;height: 27px;}
+}
+@keyframes middleChange {
+	25% {background-color: #fff;}
+	100% {width: 20px;height: 17px;left: 3px;background-color: #fff;}
+}
+@keyframes bottomChange {
+	100% {width: 45px;}
+}
+.hamburger {
+	position: relative;
+	width: 30px;
+	margin-right: 20px;
+	> span {
+		position: absolute;
+		bottom: 0;
+		width: 33px;
+		height: 4px;
+		background-color: $rs-primary-color;
+		border: 1px solid $rs-dark;
+		border-radius: $rs-radius-round;
+		transition: bottom 0.3s ease-in, border-radius 0s ease-in 0.5s;
+		.rs-hamburger-wrapper.dropDown & {
+			border-radius: 50%;
+		}
+	}
+	.top {
+		bottom: 7px;
+		.rs-hamburger-wrapper.dropDown & {
+			bottom: -13px;
+			animation: topChange 0.5s cubic-bezier(0.48, 0.43, 0.29, 1.3) 0.7s forwards;
+		}
+	}
+	.middle {
+		bottom: -3px;
+		.rs-hamburger-wrapper.dropDown & {
+			bottom: -13px;
+			animation: middleChange 0.5s cubic-bezier(0.48, 0.43, 0.29, 1.3) 0.7s forwards;
+		}
+	}
+	.bottom {
+		bottom: -13px;
+		.rs-hamburger-wrapper.dropDown & {
+			animation: bottomChange 0.3s ease-in 0.4s forwards;
+		}
 	}
 }
